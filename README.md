@@ -1,141 +1,281 @@
-<img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" style="height:64px;margin-right:32px"/>
+# 🎵 SONIC - Audio Tokenization Platform
 
-# write a readme or docs so that frontend and backend team are clear with the proejct and project structre
+<div align="center">
+  <img src="https://img.shields.io/badge/Flow-Blockchain-00EF8B?style=for-the-badge&logo=flow&logoColor=white" alt="Flow Blockchain">
+  <img src="https://img.shields.io/badge/IPFS-Lighthouse-65C2CB?style=for-the-badge&logo=ipfs&logoColor=white" alt="IPFS">
+  <img src="https://img.shields.io/badge/Node.js-Express-339933?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js">
+  <img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge" alt="License">
+</div>
 
-Here is a comprehensive README and docs outline you can use to align your frontend and backend teams clearly on the project scope, architecture, and structure:
+## 🚀 Overview
 
-***
+**SONIC** is a decentralized audio tokenization platform that empowers creators to securely store, tokenize, and monetize their audio assets on the blockchain. Built on Flow blockchain with IPFS storage via Lighthouse SDK, SONIC enables creators to mint NFTs from their audio content while maintaining privacy and ownership rights.
 
-# SonicIPChain: Audio Tokenization Decentralized Application (dApp)
+### ✨ Key Features
 
-## Project Overview
+- 🔐 **Secure Audio Storage**: Client-side encryption with decentralized IPFS storage
+- 🎨 **NFT Minting**: Tokenize audio assets as NFTs on Flow blockchain
+- 👤 **Identity Verification**: Human identity verification for authentic creators
+- 📊 **Rich Metadata**: Store demographic and audio attributes
+- 🌐 **Dual Interface**: Separate portals for creators and consumers
+- 💰 **Monetization**: License and sell audio assets with smart contracts
 
-SonicIPChain is a blockchain-based platform where individuals securely store, tokenize, and monetize their audio assets. Leveraging Self Protocol for privacy-first human identity verification, Lighthouse SDK for encrypted IPFS storage, and Flow blockchain for token minting, it empowers creators to license and sell their voice assets based on rich user attributes (age, gender, country, language, accent).
+## 🏗️ Architecture
 
-***
-
-## Key Features
-
-- Human identity and attribute verification via Self Protocol on Celo
-- Client-side audio encryption and decentralized storage through Lighthouse/IPFS
-- Tokenization of encrypted audio on Flow blockchain using Cadence smart contracts
-- Segmentation of audio assets based on demographic attributes
-- Two dedicated interfaces:
-    - **IP Seller Portal:** For users uploading and minting their audio tokens
-    - **IP Consumer Portal:** For browsing, filtering, and licensing audio tokens
-
-***
-
-## Project Structure
-
-```
-audio-tokenization-dapp/
-│
-├── frontend/                # React/Next.js frontend UI code
-│   ├── public/             # Static assets
-│   ├── src/                # Source code
-│   │   ├── components/     # Reusable UI Components
-│   │   ├── pages/          # App Routes/Pages
-│   │   ├── services/       # API and blockchain interaction services
-│   │   ├── utils/          # Utility helpers (e.g., IPFS functions)
-│   │   └── App.js / index.js
-│   ├── .env.example         # Frontend environment variables template
-│   └── package.json
-│
-├── backend/                 # Contract and backend integration code
-│   ├── contracts/           # Cadence smart contracts for Flow
-│   ├── scripts/             # Deployment & interaction scripts
-│   ├── self-integration/    # Self Protocol proof generation & verification
-│   ├── lighthouse/          # Encryption and storage utilities using Lighthouse SDK
-│   ├── tests/               # Unit and integration tests
-│   ├── .env.example         # Backend environment variables template
-│   └── package.json / flow.json
-│
-├── docs/                    # Documentation & API Specifications
-│   └── API-Spec.md          # Contract and backend API definitions
-│
-├── README.md                # Project overview and getting started instructions
-├── .gitignore               # Git ignore rules
-└── LICENSE                  # License file (optional)
+```mermaid
+graph TB
+    A[Frontend Interface] --> B[Express API Server]
+    B --> C[Flow Blockchain]
+    B --> D[Lighthouse IPFS]
+    B --> E[Verification Service]
+    C --> F[AudioNFT Smart Contract]
+    D --> G[Encrypted Audio Storage]
 ```
 
+## 📁 Project Structure
 
-***
+```
+SONIC/
+├── 📂 backend/                    # Backend services and smart contracts
+│   ├── 📄 AudioNFT.cdc           # Flow smart contract for audio NFTs
+│   ├── 📄 api-server.js          # Main Express API server
+│   ├── 📄 flow-service.js        # Flow blockchain integration
+│   ├── 📄 lighthouse-service.js  # IPFS storage service
+│   ├── 📄 VerificationServices.js # Identity verification
+│   ├── 📄 flow.json              # Flow configuration
+│   ├── 📄 package.json           # Backend dependencies
+│   └── 📄 .env.example           # Environment variables template
+│
+├── 📂 frontend/                   # Frontend application (React/Next.js)
+│   ├── 📂 src/                   # Source code
+│   ├── 📄 package.json           # Frontend dependencies
+│   └── 📄 .env.example           # Frontend environment template
+│
+├── 📂 docs/                      # Documentation
+│   └── 📄 API-Spec.md            # API specifications
+│
+├── 📄 README.md                  # This file
+├── 📄 LICENSE                    # MIT License
+└── 📄 .gitignore                 # Git ignore rules
+```
 
-## Development Workflow
+## 🛠️ Tech Stack
 
-### Team Organization
+### Backend
+- **Runtime**: Node.js with Express.js
+- **Blockchain**: Flow blockchain with Cadence smart contracts
+- **Storage**: IPFS via Lighthouse SDK
+- **File Upload**: Multer for handling audio files
+- **Authentication**: Custom verification service
 
-- **Frontend Team:**
-    - Work primarily in `/frontend` directory.
-    - Consume Self Protocol APIs for identity verification.
-    - Implement UI, routing, wallet connections, and integration with backend APIs and contracts.
-- **Backend Team:**
-    - Work primarily in `/backend` directory.
-    - Develop and deploy Cadence smart contracts on Flow.
-    - Implement Self Protocol verification, audio encryption, and IPFS storage workflows.
-    - Provide APIs/endpoints or SDKs consumable by frontend.
+### Frontend
+- **Framework**: React/Next.js (planned)
+- **Wallet Integration**: Flow wallet connectivity
+- **UI/UX**: Modern responsive design
 
+### Smart Contracts
+- **Language**: Cadence (Flow blockchain)
+- **Standard**: NonFungibleToken interface
+- **Features**: Audio NFT minting with metadata
 
-### Collaboration and Code Integration
+## 🚀 Quick Start
 
-- Use Git branches to separate frontend and backend development.
-- Create feature branches for individual tasks and open pull requests to respective branches.
-- Merge completed features regularly to avoid conflicts.
-- Use shared environment variable templates (.env.example) for consistent configuration.
-- Communicate changes to APIs and contract interfaces via `/docs/API-Spec.md`.
+### Prerequisites
 
-***
+- Node.js (v16 or higher)
+- npm or yarn
+- Flow CLI (for smart contract deployment)
+- Lighthouse API key
 
-## Getting Started (For Developers)
+### Installation
 
-1. Clone the repo and install dependencies for frontend and backend separately using `npm install` or `yarn`.
-2. Setup `.env` files in both `frontend` and `backend`, based on `.env.example` files.
-3. Backend team deploys smart contracts to Flow Testnet.
-4. Frontend team connects to deployed contracts and Self Protocol endpoints.
-5. Run the frontend dev server and backend services concurrently for end-to-end development.
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-username/SONIC.git
+   cd SONIC
+   ```
 
-***
+2. **Backend Setup**
+   ```bash
+   cd backend
+   npm install
+   
+   # Copy and configure environment variables
+   cp .env.example .env
+   # Edit .env with your configuration
+   ```
 
-## Documentation
+3. **Frontend Setup**
+   ```bash
+   cd ../frontend
+   npm install
+   
+   # Copy and configure environment variables
+   cp .env.example .env
+   # Edit .env with your configuration
+   ```
 
-- `/docs/API-Spec.md` contains detailed specs of smart contract functions, REST or SDK backend APIs, and data models for tokens, proofs, IPFS hashes, and user attributes.
-- README and `/docs` will be regularly updated with integration guidelines and test instructions.
+### Configuration
 
-***
+#### Backend Environment Variables
 
-## Communication \& Task Tracking
+```bash
+# Flow Configuration
+FLOW_NETWORK=testnet
+FLOW_RPC_URL=https://access-testnet.onflow.org
+FLOW_PRIVATE_KEY=your_flow_private_key_here
+FLOW_CONTRACT_ADDRESS=your_contract_address_here
 
-- Use GitHub Issues for bug tracking and feature requests.
-- Utilize GitHub Projects or other kanban tools for sprint planning and task assignment.
-- Regular team sync meetings to ensure alignment.
+# Lighthouse Configuration  
+LIGHTHOUSE_API_KEY=your_lighthouse_api_key_here
 
-***
+# API Configuration
+PORT=3001
+```
 
-This README format keeps all team members on the same page about roles, how to contribute, folder structure, and project goals. The `/docs/API-Spec.md` document acts as a contract between frontend and backend for smooth integration.
+### Running the Application
 
-If needed, I can help prepare a starter `/docs/API-Spec.md` with sample API and contract specs next.
-<span style="display:none">[^1][^10][^2][^3][^4][^5][^6][^7][^8][^9]</span>
+1. **Start the Backend Server**
+   ```bash
+   cd backend
+   npm run dev
+   ```
+   The API server will start on `http://localhost:3001`
 
-<div align="center">⁂</div>
+2. **Deploy Smart Contracts** (First time only)
+   ```bash
+   npm run deploy
+   ```
 
-[^1]: https://github.com/cmeraki/audiotoken
+3. **Start the Frontend** (When available)
+   ```bash
+   cd frontend
+   npm run dev
+   ```
 
-[^2]: https://www.scss.tcd.ie/donal.omahony/bfg/202122/17329846RuthBrennan.pdf
+## 📡 API Endpoints
 
-[^3]: https://www.ijnrd.org/papers/IJNRD2404736.pdf
+### Health Check
+```http
+GET /health
+```
+Returns the status of all services.
 
-[^4]: https://auditok.readthedocs.io
+### Audio Upload & Minting
+```http
+POST /upload-and-mint
+Content-Type: multipart/form-data
 
-[^5]: https://agoric.com/documentation/dapps/dapp-templates.html
+Parameters:
+- audio: Audio file (up to 50MB)
+- metadata: JSON string with audio metadata
+```
 
-[^6]: https://sapient.pro/blog/key-factors-to-consider-when-developing-your-dapp-project
+### Verification
+```http
+POST /verify-identity
+Content-Type: multipart/form-data
 
-[^7]: https://www.blockchainx.tech/how-to-build-a-dapp/
+Parameters:
+- documents: Identity verification documents
+- userData: User information JSON
+```
 
-[^8]: https://www.debutinfotech.com/blog/launch-your-rwa-tokenization-project-in-6-weeks
+## 🔧 Development Workflow
 
-[^9]: https://www.ssgmce.ac.in/uploads/UG_Projects/cse/Gr%20No-05-Project-Report.pdf
+### For Backend Developers
 
-[^10]: https://b2binpay.com/en/news/how-to-write-a-white-paper-a-step-by-step-guide-for-blockchain-startups
+1. Work primarily in the `/backend` directory
+2. Develop and test Cadence smart contracts
+3. Implement API endpoints for frontend consumption
+4. Handle IPFS storage and encryption
+5. Manage identity verification workflows
+
+### For Frontend Developers
+
+1. Work primarily in the `/frontend` directory
+2. Implement user interfaces for creators and consumers
+3. Integrate with backend APIs
+4. Handle wallet connections and transactions
+5. Create responsive and intuitive UX
+
+### Collaboration Guidelines
+
+- Use feature branches for development
+- Create pull requests for code review
+- Update API documentation in `/docs/API-Spec.md`
+- Follow conventional commit messages
+- Test thoroughly before merging
+
+## 🧪 Testing
+
+```bash
+# Backend tests
+cd backend
+npm test
+
+# Smart contract tests
+flow test
+```
+
+## 📚 Smart Contract Details
+
+### AudioNFT Contract
+
+The `AudioNFT.cdc` contract implements:
+
+- **NFT Standard**: Follows Flow's NonFungibleToken interface
+- **Metadata Storage**: Rich metadata including IPFS CID and audio attributes
+- **Minting**: Controlled minting with verification
+- **Events**: Comprehensive event logging for transparency
+
+### Key Functions
+
+- `mintNFT()`: Mint new audio NFT with metadata
+- `borrowAudioNFT()`: Borrow reference to audio NFT
+- `getMetadata()`: Retrieve NFT metadata
+
+## 🤝 Contributing
+
+We welcome contributions! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+### Code Style
+
+- Use ESLint for JavaScript code formatting
+- Follow Cadence best practices for smart contracts
+- Write clear, descriptive commit messages
+- Add tests for new features
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🆘 Support
+
+- 📧 **Email**: support@sonic-platform.com
+- 💬 **Discord**: [Join our community](https://discord.gg/sonic)
+- 📖 **Documentation**: [Full docs](./docs/)
+- 🐛 **Issues**: [GitHub Issues](https://github.com/your-username/SONIC/issues)
+
+## 🗺️ Roadmap
+
+- [ ] Complete frontend implementation
+- [ ] Advanced audio analytics
+- [ ] Multi-chain support
+- [ ] Mobile application
+- [ ] Marketplace features
+- [ ] Creator royalty system
+
+---
+
+<div align="center">
+  <p>Built with ❤️ by the SONIC Team</p>
+  <p>Empowering creators through decentralized audio tokenization</p>
+</div>
 
