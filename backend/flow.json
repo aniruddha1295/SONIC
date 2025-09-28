@@ -1,0 +1,21 @@
+{
+  "networks": {
+    "emulator": "127.0.0.1:3569",
+    "testnet": "access-testnet.onflow.org:9000",
+    "mainnet": "access.mainnet.nodes.onflow.org:9000"
+  },
+  "accounts": {
+    "testnet-account": {
+      "address": "0x7a8ecfd516b9c18d",
+      "key": "d08727eef5d989d8d7e65b830723628f837e7bb35775108e3899e90c0612086a"
+    }
+  },
+  "contracts": {
+    "AudioNFT": "./contracts/AudioNFT.cdc"
+  },
+  "deployments": {
+    "testnet": {
+      "testnet-account": ["AudioNFT"]
+    }
+  }
+}

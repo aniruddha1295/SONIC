@@ -1,0 +1,33 @@
+{
+  "name": "sonicipchain-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Backend for SonicIPChain - Audio tokenization dApp",
+  "main": "scripts/api-server.js",
+  "scripts": {
+    "start": "node scripts/api-server.js",
+    "dev": "node --watch scripts/api-server.js",
+    "deploy": "node scripts/deploy.js",
+    "test": "echo \"No tests yet\" && exit 0"
+  },
+  "dependencies": {
+    "@lighthouse-web3/sdk": "^0.4.2",
+    "@onflow/fcl": "^1.10.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "elliptic": "^6.6.1",
+    "express": "^4.18.2",
+    "multer": "^1.4.5-lts.1",
+    "sha3": "^2.1.4"
+  },
+  "keywords": [
+    "flow",
+    "lighthouse",
+    "ipfs",
+    "nft",
+    "audio",
+    "blockchain"
+  ],
+  "author": "SonicIPChain Team",
+  "license": "MIT"
+}
