@@ -37,12 +37,38 @@ graph TB
 ```
 SONIC/
 ├── 📂 backend/                    # Backend services and smart contracts
-│   ├── 📄 AudioNFT.cdc           # Flow smart contract for audio NFTs
-│   ├── 📄 api-server.js          # Main Express API server
-│   ├── 📄 flow-service.js        # Flow blockchain integration
-│   ├── 📄 lighthouse-service.js  # IPFS storage service
-│   ├── 📄 VerificationServices.js # Identity verification
-│   ├── 📄 flow.json              # Flow configuration
+│   ├── 📂 src/                   # Source code
+│   │   ├── 📂 controllers/       # API route handlers
+│   │   │   ├── 📄 audioController.js      # Audio upload & NFT minting
+│   │   │   ├── 📄 nftController.js        # NFT management
+│   │   │   └── 📄 verificationController.js # Identity verification
+│   │   ├── 📂 services/          # Business logic layer
+│   │   │   ├── 📄 flow-service.js         # Flow blockchain integration
+│   │   │   ├── 📄 lighthouse-service.js   # IPFS storage service
+│   │   │   └── 📄 VerificationServices.js # Identity verification logic
+│   │   ├── 📂 models/            # Data models
+│   │   │   ├── 📄 User.js                 # User data model
+│   │   │   └── 📄 DocumentProcessor.js    # Document processing
+│   │   ├── 📂 middleware/        # Express middleware
+│   │   │   ├── 📄 errorHandler.js         # Global error handling
+│   │   │   └── 📄 validation.js           # Request validation
+│   │   ├── 📂 utils/             # Helper functions
+│   │   │   ├── 📄 constants.js            # Application constants
+│   │   │   ├── 📄 helpers.js              # Utility functions
+│   │   │   └── 📄 logger.js               # Logging utility
+│   │   ├── 📂 config/            # Configuration files
+│   │   │   ├── 📄 database.js             # Database configuration
+│   │   │   ├── 📄 flow.json               # Flow blockchain config
+│   │   │   └── 📄 multer.js               # File upload config
+│   │   └── 📄 server.js          # Main server entry point
+│   ├── 📂 contracts/             # Cadence smart contracts
+│   │   └── 📄 AudioNFT.cdc       # Audio NFT smart contract
+│   ├── 📂 scripts/               # Deployment & utility scripts
+│   │   ├── 📄 deploy.js          # Contract deployment
+│   │   └── 📄 testMint.js        # Testing script
+│   ├── 📂 tests/                 # Test files (to be added)
+│   ├── 📂 docs/                  # Backend documentation
+│   │   └── 📄 API.md             # API documentation
 │   ├── 📄 package.json           # Backend dependencies
 │   └── 📄 .env.example           # Environment variables template
 │
@@ -51,7 +77,7 @@ SONIC/
 │   ├── 📄 package.json           # Frontend dependencies
 │   └── 📄 .env.example           # Frontend environment template
 │
-├── 📂 docs/                      # Documentation
+├── 📂 docs/                      # Project documentation
 │   └── 📄 API-Spec.md            # API specifications
 │
 ├── 📄 README.md                  # This file
@@ -141,13 +167,26 @@ PORT=3001
    npm run dev
    ```
    The API server will start on `http://localhost:3001`
+   
+   Available endpoints:
+   - Health check: `GET /health`
+   - Audio upload: `POST /api/audio/upload`
+   - NFT minting: `POST /api/audio/mint`
+   - User verification: `POST /api/verification/initiate`
 
 2. **Deploy Smart Contracts** (First time only)
    ```bash
+   cd backend
    npm run deploy
    ```
 
-3. **Start the Frontend** (When available)
+3. **Test the API** (Optional)
+   ```bash
+   cd backend
+   npm test
+   ```
+
+4. **Start the Frontend** (When available)
    ```bash
    cd frontend
    npm run dev

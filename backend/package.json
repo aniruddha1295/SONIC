@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "type": "module",
   "description": "Backend for SonicIPChain - Audio tokenization dApp",
-  "main": "scripts/api-server.js",
+  "main": "src/server.js",
   "scripts": {
-    "start": "node scripts/api-server.js",
-    "dev": "node --watch scripts/api-server.js",
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
     "deploy": "node scripts/deploy.js",
-    "test": "echo \"No tests yet\" && exit 0"
+    "test": "node scripts/testMint.js",
+    "lint": "echo \"ESLint not configured yet\" && exit 0"
   },
   "dependencies": {
     "@lighthouse-web3/sdk": "^0.4.2",
